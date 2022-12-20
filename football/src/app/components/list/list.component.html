@@ -1,0 +1,62 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p100">
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <br>
+            <br>
+            <a routerLink="/insert" routerLinkActive="">
+                <h3>
+                    insert player
+                </h3>
+            </a>
+            <br>
+            <br>
+            <br>
+            <br>
+
+                
+
+                <table class="table">
+
+                    <thead class="table-dark">
+                        <tr>
+
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>BirthDate</th>
+                            <th>Gender</th>
+                            <th>Country</th>
+                            <th>Team</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let player of players" >
+                            <!--td class="align-middle">
+                <img src="{{ product.imageUrl }}" height="50" />
+            </td-->
+                            <td class="align-middle">{{ player.firstName }}</td>
+                            <td class="align-middle">{{ player.lastName }}</td>
+                            <td class="align-middle">{{ player.birthDate }}</td>
+                            <td class="align-middle">{{ player.gender }}</td>
+                            <td class="align-middle">{{ player.country }}</td>
+                            <td class="align-middle">{{ player.team }}</td>
+                            <td class="align-middle">
+                                <a routerLink="/update/{{player.id}}" routerLinkActive="active-link">    
+                                <button class="au-btn-submit btn-sm">
+                                    Update
+                                </button>
+                            </a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

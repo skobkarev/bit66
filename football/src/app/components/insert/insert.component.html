@@ -1,0 +1,108 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <a routerLink="/list" routerLinkActive="">
+                <h3>
+                    go to list of players
+                </h3>
+            </a>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <form [formGroup]="insertFormGroup" (ngSubmit)="onSubmit()">
+                <div formGroupName="player" class="form-area">
+                    <h3>Player</h3>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>First Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="firstName" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Last Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="lastName" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Date of birth</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="birthDate" type="date" max={{today}}>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Gender</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="gender" type="list" list="gender" />
+                                <datalist id="gender">
+                                    <option *ngFor="let gender of genders">
+                                        {{gender}}
+                                    </option>
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Team</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="team" type="text" list="teams" />
+                                <datalist id="teams">
+                                    <option *ngFor="let team of teams" [value]="team">
+                                        {{team}}
+                                    </option>
+
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Country</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="country" type="list" list="countries" />
+                                <datalist id="countries">
+                                    <option *ngFor="let country of countries" [value]="country">
+                                        {{country}}
+                                    </option>
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="au-btn-submit btn-sm" type="submit">
+                        Add Player
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

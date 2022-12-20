@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_DB: "demo"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "1"
+    networks:
+      backend:
+        aliases:
+          - "postgres"
+
+  back:
+    image: skobkarevdocker/back:latest
+    ports:
+      - '8080:8080'
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "back"
+
+
+  football:
+    image: skobkarevdocker/football:latest
+    ports:
+      - '4200:80'
+    restart: on-failure
+    depends_on:
+      back:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "football"
+
+networks:
+    backend:
+        driver: bridge
+
